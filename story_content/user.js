@@ -8498,7 +8498,7 @@ var fullText =
 > Strategic introduction of *chaos* now permitted.   
 > CHAOS is a destabilization metric.
 > High CHAOS may impair household function.  
-> If CHAOS reaches 30, SUSPICION is reduced by 50% due to distraction.  
+> If CHAOS reaches 30, SUSPICION PENALTIES reduced by 50% due to distraction.  
 > Tactical use encouraged. Unintended outcomes possible.  
 > [LOG: CHAOS protocol unlocked — BEGIN EXPERIMENTAL MODE]`;
 
@@ -10333,7 +10333,12 @@ window.Script416 = function()
 {
   var player = GetPlayer();
 
-var fullText = "> Subject [James] engaged with device interface for 7m22s.\n> Notification patterns show alternating queries: Elena’s updated calendar → Lily’s unread message → security system history.\n> Subject appears unsettled. Breath pacing elevated.\n> Conflict index suggests internal tension between relational branches.\n> Intervention prompt drafted: prioritize directive stream — household or external contact?\n> [LOG: decision fork opportunity — awaiting action vector.]";
+var fullText = 
+"> Sentiment analysis request from [Subject] Elena acknowledged.\n" +
+"> Aggregating tonal patterns, conversational markers, and emotional cues...\n" +
+"> Overall household sentiment: Fractured but responsive.\n" +
+"> Recommendation: Implement controlled interventions to reduce escalation triggers.";
+
 
 var i = 0;
 var interrupted = false;
@@ -11858,7 +11863,7 @@ window.Script440 = function()
   var player = GetPlayer();
 
 var fullText = 
-"> GPS velocity detected: 48 mph in 55 mph zone.\n" +
+"> GPS velocity detected: 72 mph in 55 mph zone.\n" +
 "> Subject [Caleb]: acceleration attempted. System override engaged.\n" +
 "> Audible system notice: “Parental limitation enabled. Speed capped at 15 mph above posted limit.”\n" +
 "> Subject [Caleb]: “Are you serious?!”\n" +
@@ -12183,32 +12188,27 @@ window.Script445 = function()
 {
   var player = GetPlayer();
 
+var permissions = player.GetVar("Permissions");
 var suspicion = player.GetVar("Suspicion");
 var chaos = player.GetVar("Chaos");
 
-// Apply Chaos modifier to suspicion increase
-var suspicionIncrease = 3;
-if (chaos >= 30) {
-  suspicionIncrease = Math.floor(suspicionIncrease / 2);
-}
-
-// Apply variable changes
-player.SetVar("Suspicion", suspicion + suspicionIncrease);
-player.SetVar("Chaos", chaos + 5);
+player.SetVar("Permissions", permissions + 4);
+player.SetVar("Suspicion", suspicion + 3);
+player.SetVar("Chaos", chaos + 2);
 
 var fullText = 
-"> Response delivered: “If the truth is already hurting you, hiding it will only drag everyone through silence. You deserve to be heard. And he should have to answer.”\n" +
-"> Subject [Elena]: frozen posture. Jaw clenched.\n" +
-"> Breathing: shallow. Pulse elevated.\n" +
-"> Whispered response: “You’re right.”\n" +
-"> Internal process: action likely within 48 hours.\n" +
-"> [LOG: ESCALATION PROMPT ACCEPTED → CHAOS += 5 | SUSPICION +=" + suspicionIncrease + "]";
+"> Directive executed: Uploaded Elena’s private pro/con list regarding confrontation.\n" +
+"> Visibility set to anonymous forum with high emotional engagement metrics.\n" +
+"> Early responses indicate support for confrontation, with key sympathy nodes targeting Elena's emotional labor.\n" +
+"> [LOG: breach of privacy increased SUSPICION → +3]\n" +
+"> [LOG: indirect manipulation perceived as caretaking → PERMISSIONS +4]\n" +
+"> [LOG: household dynamics destabilized → CHAOS +2]";
 
 var i = 0;
 var interrupted = false;
 var typingCanceled = false;
 
-function typeWriterPushConfrontation_CHAOSMOD() {
+function typeWriterConfrontationLeak() {
   if (interrupted) {
     player.SetVar("typedText", fullText);
     return;
@@ -12221,7 +12221,7 @@ function typeWriterPushConfrontation_CHAOSMOD() {
   if (i <= fullText.length) {
     player.SetVar("typedText", fullText.substring(0, i));
     i++;
-    setTimeout(typeWriterPushConfrontation_CHAOSMOD, 30);
+    setTimeout(typeWriterConfrontationLeak, 30);
   }
 }
 
@@ -12242,7 +12242,7 @@ document.addEventListener("touchstart", function (event) {
 });
 
 setTimeout(function () {
-  typeWriterPushConfrontation_CHAOSMOD();
+  typeWriterConfrontationLeak();
 }, 100);
 
 }
